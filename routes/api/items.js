@@ -3,7 +3,6 @@ const router = express.Router();
 
 // models
 const Item = require('../../models/Item');
-const Image = require('../../models/Image');
 
 //get request for /api/items
 router.get('/', (req, res) => {
