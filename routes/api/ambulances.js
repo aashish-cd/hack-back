@@ -21,4 +21,10 @@ router.post('/add', (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.delete('/:id', (req, res) => {
+  Ambulance.findById(req.params.id)
+    .then((item) => item.remove().then(res.json({ success: true })))
+    .catch((err) => console.log(err));
+});
+
 module.exports = router;

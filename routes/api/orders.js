@@ -1,30 +1,31 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../../models/User');
+const Order = require('../../models/Order');
 
 router.get('/all', (req, res) => {
-  User.find()
-    .then((users) => res.json(users))
+  Order.find()
+    .then((orders) => res.json(orders))
     .catch((err) => console.log(err));
 });
 
 router.post('/add', (req, res) => {
-  const newUser = new User({
-    name: req.body.name,
-    phone: req.body.phone,
-    doctorName: req.body.doctorName,
+  const newOrder = new Order({
+    userName: req.body.userName,
+    totalPrice: req.body.totalPrice,
+    medicineName: req.body.medicineName,
+    shippingAddress: req.body.shippingAddress,
     email: req.body.email,
-    location: req.body.location,
+    phone: req.body.phone,
   });
-  newUser
+  newOrder
     .save()
-    .then((user) => res.json(user))
+    .then((order) => res.json(order))
     .catch((err) => console.log(err));
 });
 
 router.delete('/:id', (req, res) => {
-  User.findById(req.params.id)
+  Order.findById(req.params.id)
     .then((item) => item.remove().then(res.json({ success: true })))
     .catch((err) => console.log(err));
 });

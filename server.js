@@ -11,6 +11,7 @@ const doctor = require('./routes/api/doctors');
 const users = require('./routes/api/users');
 const stores = require('./routes/api/stores');
 const carts = require('./routes/api/carts');
+const orders = require('./routes/api/orders');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/doctors', doctor);
 app.use('/api/users', users);
 app.use('/api/stores', stores);
 app.use('/api/carts', carts);
+app.use('/api/orders/', orders);
 
 //static folder
 app.use(express.static(__dirname + '/public'));
