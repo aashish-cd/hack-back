@@ -15,15 +15,13 @@ const orders = require('./routes/api/orders');
 
 const app = express();
 
-app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
-
+app.use(cors());
+app.use(bodyParser.json());
 const port = process.env.PORT || 5000;
 
 //bodyparse middleware
-app.use(bodyParser.json());
 
 //cors
-app.use(cors());
 
 //useRoutes
 app.use('/api/items', items);
